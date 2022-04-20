@@ -19,6 +19,14 @@ describe('AppController (e2e)', () => {
     [0, 0, 0, 1, 0],
   ];
 
+  const mockBoardAfterTick = [
+    [0, 0, 0, 0, 0],
+    [0, 1, 1, 0, 0],
+    [0, 1, 0, 1, 0],
+    [0, 0, 1, 1, 1],
+    [0, 0, 0, 1, 1],
+  ];
+
   beforeEach(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
@@ -35,5 +43,14 @@ describe('AppController (e2e)', () => {
       .get('/api')
       .send();
     expect(response).toEqual(mockBoard);
+  });
+
+  describe('/api/tick (GET)', () => {});
+  it('it changes the board after tick method', async () => {
+    createBoard({ array: mockBoard });
+    const { body: response } = await request(app.getHttpServer())
+      .get('/api/tick')
+      .send();
+    expect(response).toEqual(mockBoardAfterTick);
   });
 });

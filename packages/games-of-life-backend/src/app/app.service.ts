@@ -7,7 +7,6 @@ export class AppService {
 
   createBoard(board: number[][]) {
     this.boardInstance.createCustomBoard(board);
-    console.log(this.boardInstance.board);
     return this.boardInstance.getBoard();
   }
 
