@@ -25,6 +25,7 @@
     "@nrwl/workspace": "13.10.3",
     "@types/jest": "^27.0.2",
     "@types/node": "16.11.7",
+    "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "~5.18.0",
     "@typescript-eslint/parser": "~5.18.0",
     "eslint": "~8.12.0",

@@ -2,11 +2,12 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from './../src/app/app.module';
+import { BoardDto } from '../src/app/dto/BoardDto';
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
 
-  async function createBoard(board: number[][]) {
+  async function createBoard(board: BoardDto) {
     await request(app.getHttpServer()).post('/api').send(board).expect(201);
   }
 
@@ -27,7 +28,12 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
-  it('/api (GET)', () => {
-    createBoard(mockBoard);
+  describe('/api (POST)', () => {});
+  it('it should create board with given shape', async () => {
+    createBoard({ array: mockBoard });
+    const { body: response } = await request(app.getHttpServer())
+      .get('/api')
+      .send();
+    expect(response).toEqual(mockBoard);
   });
 });
