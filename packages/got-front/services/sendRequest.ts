@@ -2,10 +2,10 @@ import axios from 'axios';
 
 export class SendRequest {
   async tick(boardId: string): Promise<(0 | 1)[][]> {
-    const url = `http://localhost:3333/api/tick/${boardId}`;
+    const url = `http://localhost:3333/api/tick/`;
     try {
       console.log('tried to get next board');
-      const response = await axios.get(url);
+      const response = await axios.get(url + boardId);
       const board: (0 | 1)[][] = response.data;
       return board;
     } catch (err: any) {

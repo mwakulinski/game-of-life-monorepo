@@ -29,9 +29,6 @@ export class Board {
   }
 
   tick(id: string) {
-    // console.log(id);
-    // console.log(this.boards[id]);
-    // console.log(this.boards);
     return (this.boards[id] = this.boards[id].map((row, i) => {
       return row.map((col, j) => {
         const n = this.getAllAliveNeighbors(i, j, this.boards[id]);

@@ -12,10 +12,7 @@ export class AppService {
   }
 
   tick(id: string) {
-    console.log(id);
-    const newBoard = this.boardInstance.tick(id);
-    console.log(newBoard);
-    return newBoard;
+    return this.boardInstance.tick(id);
   }
 
   getBoard(id: string) {
