@@ -1,14 +1,19 @@
 import { Cell } from './Cell';
+import { BoardDto } from './Dto/BoardDto';
 
 export class Board {
   board: number[][] = [];
+  boards: {
+    [id: number]: number[][];
+  } = {};
 
-  createCustomBoard(board: number[][]) {
-    this.board = board;
+  createCustomBoard(board: BoardDto) {
+    this.boards[board.id] = board.array;
+    // return (this.board = board.array);
   }
 
-  getBoard(): number[][] {
-    return this.board;
+  getBoard(id: number): number[][] {
+    return this.boards[id];
   }
 
   getAllAliveNeighbors(x: number, y: number, board: number[][]) {
@@ -24,11 +29,11 @@ export class Board {
     return aliveNeighbors;
   }
 
-  tick() {
-    return (this.board = this.board.map((row, i) => {
+  tick(id: number) {
+    return (this.boards[id] = this.boards[id].map((row, i) => {
       return row.map((col, j) => {
-        const n = this.getAllAliveNeighbors(i, j, this.board);
-        const cell = new Cell(this.board[i][j], n).tick().getState();
+        const n = this.getAllAliveNeighbors(i, j, this.boards[id]);
+        const cell = new Cell(this.boards[id][i][j], n).tick().getState();
         return cell;
       });
     }));
