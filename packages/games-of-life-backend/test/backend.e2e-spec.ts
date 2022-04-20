@@ -56,6 +56,21 @@ describe('AppController (e2e)', () => {
         })
       );
     });
+
+    it('it throw error when id passed not as string', async () => {
+      const { body: response } = await request(app.getHttpServer())
+        .post('/')
+        .send({ id: 1, array: mockBoard })
+        .expect(400);
+      expect(response).toEqual(
+        expect.objectContaining({
+          message: [
+            'id must be longer than or equal to 1 characters',
+            'id must be a string',
+          ],
+        })
+      );
+    });
   });
 
   describe('/api/tick (GET)', () => {});
