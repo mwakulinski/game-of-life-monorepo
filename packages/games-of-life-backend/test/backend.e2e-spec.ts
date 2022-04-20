@@ -36,13 +36,26 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
-  describe('/api (POST)', () => {});
-  it('it should create board with given shape', async () => {
-    createBoard({ id: '1', array: mockBoard });
-    const { body: response } = await request(app.getHttpServer())
-      .get('/1')
-      .send();
-    expect(response).toEqual(mockBoard);
+  describe('/api (POST)', () => {
+    it('it should create board with given shape', async () => {
+      createBoard({ id: '1', array: mockBoard });
+      const { body: response } = await request(app.getHttpServer())
+        .get('/1')
+        .send();
+      expect(response).toEqual(mockBoard);
+    });
+
+    it('it throw error when no id passed', async () => {
+      const { body: response } = await request(app.getHttpServer())
+        .post('/')
+        .send({ id: '', array: mockBoard })
+        .expect(400);
+      expect(response).toEqual(
+        expect.objectContaining({
+          message: ['id must be longer than or equal to 1 characters'],
+        })
+      );
+    });
   });
 
   describe('/api/tick (GET)', () => {});
