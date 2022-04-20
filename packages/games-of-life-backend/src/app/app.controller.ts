@@ -18,12 +18,7 @@ export class AppController {
   @Post('')
   @UsePipes(new ValidationPipe({ transform: true }))
   createBoard(@Body() body: BoardDto) {
-    try {
-      const response = this.appService.createBoard(body);
-      return response;
-    } catch (error) {
-      throw error;
-    }
+    return this.appService.createBoard(body);
   }
 
   @Get('tick/:id')
