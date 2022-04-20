@@ -4,15 +4,14 @@ import { BoardDto } from './Dto/BoardDto';
 export class Board {
   board: number[][] = [];
   boards: {
-    [id: number]: number[][];
+    [id: string]: number[][];
   } = {};
 
   createCustomBoard(board: BoardDto) {
     this.boards[board.id] = board.array;
-    // return (this.board = board.array);
   }
 
-  getBoard(id: number): number[][] {
+  getBoard(id: string): number[][] {
     return this.boards[id];
   }
 
@@ -29,7 +28,10 @@ export class Board {
     return aliveNeighbors;
   }
 
-  tick(id: number) {
+  tick(id: string) {
+    // console.log(id);
+    // console.log(this.boards[id]);
+    // console.log(this.boards);
     return (this.boards[id] = this.boards[id].map((row, i) => {
       return row.map((col, j) => {
         const n = this.getAllAliveNeighbors(i, j, this.boards[id]);

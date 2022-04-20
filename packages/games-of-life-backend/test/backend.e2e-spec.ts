@@ -38,7 +38,7 @@ describe('AppController (e2e)', () => {
 
   describe('/api (POST)', () => {});
   it('it should create board with given shape', async () => {
-    createBoard({ id: 1, array: mockBoard });
+    createBoard({ id: '1', array: mockBoard });
     const { body: response } = await request(app.getHttpServer())
       .get('/api/1')
       .send();

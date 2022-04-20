@@ -1,4 +1,4 @@
 export class BoardDto {
-  id: number;
+  id: string;
   array: number[][];
 }

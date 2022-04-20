@@ -3,6 +3,7 @@ import {
   Controller,
   Get,
   Param,
+  ParseFloatPipe,
   ParseIntPipe,
   Post,
 } from '@nestjs/common';
@@ -14,18 +15,18 @@ import { BoardDto } from './dto/BoardDto';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Post('/api')
+  @Post('')
   createBoard(@Body() body: BoardDto) {
     return this.appService.createBoard(body);
   }
 
-  @Get('/api/tick/:id')
-  tick(@Param('id', ParseIntPipe) id: number) {
+  @Get('tick/:id')
+  tick(@Param('id') id: string) {
     return this.appService.tick(id);
   }
 
-  @Get('/api/:id')
-  getBoard(@Param('id', ParseIntPipe) id: number) {
+  @Get(':id')
+  getBoard(@Param('id') id: string) {
     return this.appService.getBoard(id);
   }
 }
