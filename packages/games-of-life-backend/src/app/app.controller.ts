@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
 
 import { AppService } from './app.service';
 import { BoardDto } from './dto/BoardDto';
@@ -8,8 +16,14 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Post('')
+  @UsePipes(new ValidationPipe({ transform: true }))
   createBoard(@Body() body: BoardDto) {
-    return this.appService.createBoard(body);
+    try {
+      const response = this.appService.createBoard(body);
+      return response;
+    } catch (error) {
+      throw error;
+    }
   }
 
   @Get('tick/:id')
