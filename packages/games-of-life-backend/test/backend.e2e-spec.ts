@@ -19,6 +19,14 @@ describe('AppController (e2e)', () => {
     [0, 0, 0, 1, 0],
   ];
 
+  const badMockBoard = [
+    [0, 0, '4', 0, 0],
+    [0, 1, 1, 0, 0],
+    [0, 1, 'k', 0, 0],
+    [0, 0, 0, 1, 1],
+    [0, 0, 0, 1, 0],
+  ];
+
   const mockBoardAfterTick = [
     [0, 0, 0, 0, 0],
     [0, 1, 1, 0, 0],
@@ -71,6 +79,18 @@ describe('AppController (e2e)', () => {
         })
       );
     });
+
+    // it('it throw error when no id passed', async () => {
+    //   const { body: response } = await request(app.getHttpServer())
+    //     .post('/')
+    //     .send({ id: '1', array: badMockBoard })
+    //     .expect(400);
+    //   expect(response).toEqual(
+    //     expect.objectContaining({
+    //       message: ['id must be longer than or equal to 1 characters'],
+    //     })
+    //   );
+    // });
   });
 
   describe('/api/tick (GET)', () => {});
