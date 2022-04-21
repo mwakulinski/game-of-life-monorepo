@@ -112,8 +112,7 @@ button {
 }
 
 button.hidden {
-  background-color: grey;
-  color: grey;
+  display: none;
 }
 
 .margin-right {
