@@ -4,8 +4,8 @@
   "license": "MIT",
   "scripts": {
     "test": "jest",
-    "build": "npx nx build games-of-life-backend --prod",
-    "start": "npx nx serve games-of-life-backend --prod"
+    "build": "nx build games-of-life-backend --prod",
+    "start": "nx serve games-of-life-backend --prod"
   },
   "private": true,
   "dependencies": {
@@ -29,7 +29,8 @@
     "reflect-metadata": "^0.1.13",
     "regenerator-runtime": "0.13.7",
     "rxjs": "^7.0.0",
-    "tslib": "^2.0.0"
+    "tslib": "^2.0.0",
+    "nx": "13.10.3"
   },
   "devDependencies": {
     "@emotion/babel-plugin": "11.7.2",
