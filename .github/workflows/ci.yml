@@ -19,3 +19,4 @@ jobs:
       - uses: nrwl/nx-set-shas@v2
       - run: npm ci
       - run: npx nx affected --target=test --all --ci --code-coverage
+      - run: npx nx affected --target=test:e2e --all --ci --code-coverage

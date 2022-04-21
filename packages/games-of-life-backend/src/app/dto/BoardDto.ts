@@ -1,5 +1,5 @@
 import { IsString, MinLength, IsArray, ArrayNotEmpty } from 'class-validator';
-//change
+//changemore
 export class BoardDto {
   @IsString()
   @MinLength(1)
