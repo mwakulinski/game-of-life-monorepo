@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { Button } from './Button';
-import { StartButton } from './StartButton';
 
 interface InputProps {
+  hide: boolean;
   onInputChange(e: number): void;
   onStartClick(): void;
 }
 
-export function Input({ onInputChange, onStartClick }: InputProps) {
+export function Input({ onInputChange, onStartClick, hide }: InputProps) {
   const [inputValue, setInputValue] = useState<number>(0);
   return (
     <div className="input-box">
@@ -23,7 +23,7 @@ export function Input({ onInputChange, onStartClick }: InputProps) {
         }}
         value={inputValue}
       />
-      <StartButton onClick={() => onStartClick()} />
+      <Button onClick={() => onStartClick()} text="START" />
     </div>
   );
 }

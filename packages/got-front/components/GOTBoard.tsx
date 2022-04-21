@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Button } from './Button';
-// import { Board } from '@l22-got-monorepo/got-core';
 import { Cell } from './Cell';
 import { produce } from 'immer';
 import { Input } from './Input';
@@ -10,25 +9,20 @@ export interface GOTBoardProps {}
 
 export function GOTBoard() {
   const [board, setBoard] = useState<(0 | 1)[][]>([]);
-  const [boardId, setBoardId] = useState<string>('');
+  const [boardId, setBoardId] = useState<string>("");
+  const [playing, setPlaying] = useState<boolean>(false);
 
   function handleTick() {
-    // setBoard(new Board(board).tick());
     new SendRequest().tick(boardId).then((res: (0 | 1)[][]) => {
       setBoard(res);
     });
   }
 
   function handleStartClick() {
-    const newBoardId = Math.random().toString();
-    setBoardId(newBoardId);
-    const emptyBoard = new Array(board.length).fill(
-      new Array(board.length).fill(0)
-    );
-    console.log(newBoardId);
     new SendRequest()
-      .newBoard(newBoardId, board)
+      .newBoard(boardId, board)
       .then((res: string) => console.log('id: ', res));
+    setPlaying(true);
   }
 
   function handleCellClick(rowIdx: number, cellIdx: number) {
@@ -41,11 +35,23 @@ export function GOTBoard() {
         }
       })
     );
+    setPlaying(false);
   }
 
   function handleInputChange(inputValue: number) {
     setBoard(new Array(inputValue).fill(new Array(inputValue).fill(0)));
-    setBoardId('');
+    const newBoardId = Math.random().toString();
+    setBoardId(newBoardId);
+  }
+  function handleReset() {
+    const emptyBoard = new Array(board.length).fill(
+      new Array(board.length).fill(0)
+    );
+    setBoard(emptyBoard);
+    const newBoardId = Math.random().toString();
+    new SendRequest()
+      .newBoard(newBoardId, emptyBoard)
+      .then((res: string) => console.log('id: ', res));
   }
 
   return (
@@ -57,6 +63,7 @@ export function GOTBoard() {
         onStartClick={() => {
           handleStartClick();
         }}
+        hide={playing ? true : false}
       />
       <div className="board">
         {board.map((row, rowIdx) => {
@@ -79,7 +86,7 @@ export function GOTBoard() {
         onClick={() => {
           handleTick();
         }}
-        hide={!boardId ? true : false}
+        hide={!playing ? true : false}
         text="TICK"
       />
     </div>
