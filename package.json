@@ -5,7 +5,7 @@
   "scripts": {
     "test": "jest",
     "build": "nx build games-of-life-backend --prod",
-    "start": "nx start games-of-life-backend --prod"
+    "start": "nx serve games-of-life-backend --prod"
   },
   "private": true,
   "dependencies": {
