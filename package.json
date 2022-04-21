@@ -2,7 +2,9 @@
   "name": "monorepo2",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "test": "jest"
+  },
   "private": true,
   "dependencies": {
     "@emotion/react": "11.9.0",
@@ -43,6 +45,7 @@
     "@nrwl/react": "13.10.3",
     "@nrwl/web": "13.10.3",
     "@nrwl/workspace": "13.10.3",
+    "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "13.0.0",
     "@testing-library/react-hooks": "7.0.2",
     "@types/jest": "27.0.2",
