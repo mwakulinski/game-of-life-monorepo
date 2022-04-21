@@ -11,7 +11,7 @@ body {
   font-family: inherit;
   line-height: inherit;
   margin: 0;
-  padding:0
+  padding: 0;
 }
 h1,
 h2,
@@ -22,7 +22,7 @@ pre {
 
 h1 {
   padding: 0.5rem 0;
-  color:rgb(115, 175, 115);
+  color: rgb(115, 175, 115);
   text-align: center;
   font-size: 2rem;
 }
@@ -73,10 +73,10 @@ button {
 }
 
 .cell {
-margin: 0.2rem;
-height: 2rem;
-width: 2rem;
-border-radius: 0.3rem;
+  margin: 0.2rem;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 0.3rem;
 }
 
 .input-box {
@@ -118,4 +118,8 @@ button.hidden {
 
 .margin-right {
   margin-right: 4rem;
+}
+
+.cell:hover {
+  background-color: rgb(68, 175, 68);
 }
