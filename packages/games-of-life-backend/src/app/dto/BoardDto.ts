@@ -1,4 +1,4 @@
-import { IsString, MinLength, IsArray } from 'class-validator';
+import { IsString, MinLength, IsArray, ArrayNotEmpty } from 'class-validator';
 
 export class BoardDto {
   @IsString()
@@ -8,5 +8,6 @@ export class BoardDto {
   @IsArray({
     each: true,
   })
+  @ArrayNotEmpty()
   array: number[][];
 }
