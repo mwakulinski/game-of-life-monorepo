@@ -5,7 +5,7 @@
   "scripts": {
     "test": "jest",
     "build": "nx build games-of-life-backend --prod",
-    "start": "nx serve games-of-life-backend --prod"
+    "start": "node dist/packages/games-of-life-backend/main.js"
   },
   "private": true,
   "dependencies": {
