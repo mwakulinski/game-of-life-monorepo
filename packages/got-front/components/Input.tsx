@@ -23,7 +23,7 @@ export function Input({ onInputChange, onStartClick, hide }: InputProps) {
         }}
         value={inputValue}
       />
-      <Button onClick={() => onStartClick()} text="START" />
+      <Button onClick={() => onStartClick()} text="START" hide={hide} />
     </div>
   );
 }
