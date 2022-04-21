@@ -1,1 +1,1 @@
-web: sh -c "npm run build && npm run start:backend && npm run start:frontend"
+web: sh -c "npm build && npm start:backend && npm start:frontend"
