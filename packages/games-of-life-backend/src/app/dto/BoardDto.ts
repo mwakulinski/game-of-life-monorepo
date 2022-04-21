@@ -1,10 +1,4 @@
-import {
-  IsString,
-  MinLength,
-  IsArray,
-  ValidateNested,
-  IsNumber,
-} from 'class-validator';
+import { IsString, MinLength, IsArray } from 'class-validator';
 
 export class BoardDto {
   @IsString()
