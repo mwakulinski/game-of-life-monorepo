@@ -6,7 +6,7 @@ export class Board {
   boards: {
     [id: string]: number[][];
   } = {};
-
+  // jjj
   createCustomBoard(board: BoardDto) {
     this.boards[board.id] = board.array;
   }
